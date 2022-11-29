@@ -23,17 +23,18 @@ app.use('/api/locations', locationRoutes);
 
 ///------------- deployment --------------------
 
-__dirname = path.resolve();
+ __dirname = path.resolve();
+
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "/dc-reg_frontend/build" )))
-    
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, "dc-reg_frontend", "build", "index.html" ))
-    })
+  app.use(express.static(path.join(__dirname, "/dc-reg_frontend/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "dc-reg_frontend", "build", "index.html"))
+  );
 } else {
-    app.get('/', (req,res) => {
-    res.send("API is Running");
-});
+  app.get("/", (req, res) => {
+    res.send("API is running..");
+  });
 }
 
 ///------------- deployment --------------------
