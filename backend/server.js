@@ -26,10 +26,10 @@ app.use('/api/locations', locationRoutes);
  __dirname = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/dc-reg_frontend/build")));
+  app.use(express.static(path.join(__dirname, "dc-reg_frontend/build")));
 
   app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "dc-reg_frontend", "build", "index.html"))
+    res.sendFile(path.join(__dirname, "dc-reg_frontend", "build", "index.html"))
   );
 } else {
   app.get("/", (req, res) => {
